@@ -18,10 +18,6 @@ float kernel[3][3];
 uint8_t conv[ROWS][COLS][3];
 #pragma enddeclarations
 
-#include <unistd.h>
-#include <sys/time.h>
-#include <math.h>
-
 #ifdef TIME
 #define IF_TIME(foo) foo;
 #else
