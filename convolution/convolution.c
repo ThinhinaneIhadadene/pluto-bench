@@ -86,12 +86,12 @@ int main()
 for (q = 0; q < ROWS- 2; q++) {
     for (w = 0; w < COLS - 2; w++) {
         for (cc = 0; cc < 3; cc++) {
-
-            conv[q][w][cc] = src[q][w][cc]*kernel[0][0]+src[q+1][w][cc]*kernel[1][0]+
-            src[q+2][w][cc]*kernel[2][0]+src[q][w+1][cc]*kernel[0][1]+
-            src[q+1][w+1][cc]*kernel[1][1]+
-            src[q+1][w+2][cc]*kernel[1][2]+src[q+2][w][cc]*kernel[2][0]+
-            src[q+2][w+1][cc]*kernel[2][1]+src[q+2][w+2][cc]*kernel[2][2];
+          conv[q][w][cc]=0;
+          for ( kq = 0; kq < 3; kq++) {
+              for ( kw = 0; kw < 3; kw++) {
+                  conv[q][w][cc]+= src[q + kq][w + kw][cc] * kernel[kq][kw];
+              }
+          }
         }
     }
 }

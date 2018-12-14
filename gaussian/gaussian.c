@@ -75,18 +75,20 @@ int main()
 for (q = 0; q < ROWS - 5; q++) {
     for ( w = 0; w < COLS - 5; w++) {
         for (cc = 0; cc < 3; cc++) {
-            temp[q][w][cc] = src[q][w][cc] * kernelX[0]+src[q + 1][w][cc] * kernelX[1]+
-            src[q + 2][w][cc] * kernelX[2]+src[q + 3][w][cc] * kernelX[3]+
-            src[q + 4][w][cc] * kernelX[4];
+            temp[q][w][cc] = 0;
+            for ( r = 0; r < 5; r++) {
+                temp[q][w][cc] += src[q + r][w][cc] * kernelX[r];
+            }
         }
     }
 }
 for (q = 0; q < ROWS - 5; q++) {
     for ( w = 0; w < COLS - 5; w++) {
         for (cc = 0; cc < 3; cc++) {
-            conv[q][w][cc] = temp[q][w][cc] * kernelY[0]+temp[q][w + 1][cc] * kernelY[1]+
-            temp[q][w + 2][cc] * kernelY[2]+temp[q][w + 3][cc] * kernelY[3]+
-            temp[q][w + 4][cc] * kernelY[4];
+            conv[q][w][cc] = 0;
+            for (e = 0; e < 5; e++) {
+                conv[q][w][cc] += temp[q][w + e][cc] * kernelY[e];
+            }
         }
     }
 }
