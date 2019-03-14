@@ -1,0 +1,4 @@
+#define __DIM0t2 0
+#define __NUM_DIST_DIMS0 1
+#define _LB_REPLACE_ME_DISTLOOG0t2 0
+#define _UB_REPLACE_ME_DISTLOOG0t2 19
